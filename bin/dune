@@ -1,0 +1,4 @@
+(executable
+ (public_name ocaml_practice)
+ (name Ocaml1)
+ (libraries ocaml_practice))

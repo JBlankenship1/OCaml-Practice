@@ -1,0 +1,7 @@
+(lang dune 3.24)
+(name ocaml_practice)
+(sections (lib .) (bin ../../bin) (doc ../../doc/ocaml_practice))
+(files
+ (lib (META dune-package opam))
+ (bin (ocaml_practice.exe))
+ (doc (README.md)))
