@@ -1,0 +1,11 @@
+lib: [
+  "_build/install/default/lib/ocaml_practice/META"
+  "_build/install/default/lib/ocaml_practice/dune-package"
+  "_build/install/default/lib/ocaml_practice/opam"
+]
+bin: [
+  "_build/install/default/bin/ocaml_practice.exe"
+]
+doc: [
+  "_build/install/default/doc/ocaml_practice/README.md"
+]
