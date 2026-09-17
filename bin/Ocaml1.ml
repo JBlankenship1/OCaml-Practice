@@ -26,12 +26,38 @@ Problem 2
 val cumulative_sum : int list -> int list 
 test run: cumulative_sum [12; 27; -13];;
 *)
-let cumulative_sum (int_list : int list) : int list option = 
-  Some (int_list)
+let cumulative_sum (old_list : int list) : int list option = 
+  let rec func2 ((sum: int), (old_list: int list)) : int list =
+    match old_list with
+    | [] -> []
+    | a :: b -> 
+      let new_sum = sum + a in
+      new_sum :: func2 (new_sum, b)
+  in
+  Some (func2 (0, old_list))
 
 
 (* Problem 3
-val search : int list -> int -> int option *)
+val search : int list -> int -> int option 
+Implementation notes:
+One function that takes in the inputs, 
+then have it call a second function with int option
+that iterates through the list with an increment, 
+if the head = the n value, then it returns index, otherwise it increases index. 
+If the tail is empty (no index found) it returns null/ *)
+let search ((xs: int list), (n: int)) : int option = 
+  let rec increment ((xs: int list), (n: int), (increment: int)) : int option =
+    if List.length xs = 0 then
+      None
+    else
+      if xs.hd = n then
+        Some(increment)
+      else
+        let xs_new = xs.tl in
+        increment(xs_new, n, (increment + 1)) 
+    in
+    Some(increment(xs, n, 0))
+      
 
 (* Problem 4
 val sequence : int -> int -> int -> int list *)
