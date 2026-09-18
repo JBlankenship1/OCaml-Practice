@@ -10,21 +10,53 @@ let b = a + 23 ;;
 let c = 2 * b ;;
 let()= print_int c ;;
 
-(* Problem 1
-val get_nth : string list * int -> string option *)
+(* 
+Problem 1
+val get_nth : string list * int -> string option 
+test run: get_nth(["a"; "b"; "c"], 2);; 
+*)
 let get_nth ((string_list : string list), (i : int)) : string option =
   if i < 1 || i >= List.length string_list + 1 then
     None
   else
     Some (List.nth string_list (i - 1))
 
-(* Problem 2
-val cumulative_sum : int list -> int list *)
-let cumulative_sum : (int_list
+(* 
+Problem 2
+val cumulative_sum : int list -> int list 
+test run: cumulative_sum [12; 27; -13];;
+*)
+let cumulative_sum (old_list : int list) : int list option = 
+  let rec func2 ((sum: int), (old_list: int list)) : int list =
+    match old_list with
+    | [] -> []
+    | head :: tail -> 
+      let new_sum = sum + head in
+      new_sum :: func2 (new_sum, tail)
+  in
+  Some (func2 (0, old_list))
 
 
 (* Problem 3
-val search : int list -> int -> int option *)
+val search : int list -> int -> int option 
+Implementation notes:
+One function that takes in the inputs, 
+then have it call a second function with int option
+that iterates through the list with an increment, 
+if the head = the n value, then it returns index, otherwise it increases index. 
+If the tail is empty (no index found) it returns null/ *)
+let search ((xs: int list), (n: int)) : int option = 
+  let rec incrementfunc ((xs: int list), (increment: int)) : int option =
+    match xs with
+        | [] -> None
+        | head :: tail ->
+            if head = n then
+              Some(increment)
+            else
+              incrementfunc(tail, (increment + 1))
+      in
+    incrementfunc(xs, 0)
+      
 
 (* Problem 4
 val sequence : int -> int -> int -> int list *)
