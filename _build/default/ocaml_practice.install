@@ -4,7 +4,8 @@ lib: [
   "_build/install/default/lib/ocaml_practice/opam"
 ]
 bin: [
-  "_build/install/default/bin/ocaml_practice.exe"
+  "_build/install/default/bin/ocaml1.exe"
+  "_build/install/default/bin/ocaml2.exe"
 ]
 doc: [
   "_build/install/default/doc/ocaml_practice/README.md"

@@ -1,4 +1,4 @@
-(executable
- (public_name ocaml_practice)
- (name Ocaml1)
+(executables
+ (names Ocaml1 Ocaml2)
+ (public_names ocaml1 ocaml2)
  (libraries ocaml_practice))

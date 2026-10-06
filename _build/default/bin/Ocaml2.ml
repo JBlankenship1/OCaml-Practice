@@ -18,12 +18,13 @@ type nat =
 (* 
 Problem 1
 val add : nat -> nat -> nat *)
-(* Solution: *)
-(* add (Succ Zero) (Succ (Succ Zero));;*)
+(*Solution: *)
+(*  *)
 let rec add (a : nat) (b : nat) : nat =
   match a with
   | Zero -> b
-  | Succ c -> Succ (add c b)
+  | Succ n -> Succ (add n b)
+
 
 (* 
 Problem 2
@@ -31,15 +32,6 @@ val to_int : nat -> int
 val from_int : int -> nat *)
 (* Solution: *)
 (* *)
-let to_int (a : nat) : int =
-  let rec inc_func ((natural : nat), (i : int)) =
-    match a with
-    | Zero -> i
-    | Succ natural -> (inc_func(natural, (i + 1))) in
-  inc_func(a, 0)
-
-(* let rec from_int (x : int) : nat * = *)
-
 
 (* Problem 3
 val evaluate: expr -> int *)
