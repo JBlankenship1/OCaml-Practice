@@ -30,30 +30,61 @@ Problem 2
 val to_int : nat -> int 
 val from_int : int -> nat *)
 (* Solution: *)
-(* *)
+(* to_int (Succ (Succ (Succ Zero)));; *)
+(* from_int (5);; *)
+
+
 let to_int (a : nat) : int =
   let rec inc_func ((natural : nat), (i : int)) =
-    match a with
+    match natural with
     | Zero -> i
-    | Succ natural -> (inc_func(natural, (i + 1))) in
+    | Succ natural -> inc_func(natural, (i + 1)) in
   inc_func(a, 0)
 
-(* let rec from_int (x : int) : nat * = *)
+let from_int (a : int) : nat =
+  let rec inc_func ((i : int), (natural : nat)) =
+    if i = 0 then
+      natural
+    else
+    inc_func((i-1), Succ(natural)) in
+  inc_func(a, Zero)
 
 
 (* Problem 3
 val evaluate: expr -> int *)
 (* Solution: *)
-(*  *)
+(* evaluate(Mul (Mul (Mul (Literal 5, Literal 99), Literal 98), Literal 97));; *)
 
+type expr =
+  | Literal of int
+  | Plus of expr * expr
+  | Minus of expr * expr
+  | Mul of expr * expr
+
+let rec evaluate (ex : expr) : int =
+  match ex with
+  | Literal n -> n
+  | Plus (left, right) -> (evaluate left) + (evaluate right)
+  | Minus (left, right) -> (evaluate left) - (evaluate right)
+  | Mul (left, right) -> (evaluate left) * (evaluate right)
 
 (* Problem 4
 val filtermap: ('a -> bool) -> ('a -> 'b) -> 'a list -> 'b list *)
 (*Solution: *)
-(*  *)
+(* filtermap (fun x -> x < 0) (fun x -> x + 100) [-10; 20; -30];; *)
+let rec filtermap (filter : 'a -> bool) (map : 'a -> 'b) (list : 'a list) : 'b list =
+  match list with
+    | [] -> []
+    | head:: tail ->
+      if filter head then
+        map head :: filtermap filter map tail
+      else
+        filtermap filter map tail
 
 
 (* Problem 5
 val makesay string -> (string -> string) *)
 (*Solution: *)
 (*  *)
+let makesay (a : string) (b : string) : string =
+  a ^ " "
