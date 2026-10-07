@@ -18,7 +18,7 @@ type nat =
 (* 
 Problem 1
 val add : nat -> nat -> nat *)
-(* Solution: *)
+(* Solution: Iterate through successor list with a match, using recursion to get to most nested pair.*)
 (* add (Succ Zero) (Succ (Succ Zero));;*)
 let rec add (a : nat) (b : nat) : nat =
   match a with
@@ -29,7 +29,8 @@ let rec add (a : nat) (b : nat) : nat =
 Problem 2
 val to_int : nat -> int 
 val from_int : int -> nat *)
-(* Solution: *)
+(* Solution: to_int recursively iterates through the input, incrementing i until the all Succ have been reached
+from_int is similar, but builds a successors list whilst decrementing i recursively. *)
 (* to_int (Succ (Succ (Succ Zero)));; *)
 (* from_int (5);; *)
 
@@ -52,7 +53,8 @@ let from_int (a : int) : nat =
 
 (* Problem 3
 val evaluate: expr -> int *)
-(* Solution: *)
+(* Solution: After defining type with our parameters, we can iterate through the three operands, not stopping our 
+recursions until reaching a literal. *)
 (* evaluate(Mul (Mul (Mul (Literal 5, Literal 99), Literal 98), Literal 97));; *)
 
 type expr =
@@ -70,7 +72,8 @@ let rec evaluate (ex : expr) : int =
 
 (* Problem 4
 val filtermap: ('a -> bool) -> ('a -> 'b) -> 'a list -> 'b list *)
-(*Solution: *)
+(* Solution: Iterate through list (stopping at the end of it). If the element in the list evaluates to true
+with the filter, apply map to it and append it to the left as the tail is recalled.*)
 (* filtermap (fun x -> x < 0) (fun x -> x + 100) [-10; 20; -30];; *)
 let rec filtermap (filter : 'a -> bool) (map : 'a -> 'b) (list : 'a list) : 'b list =
   match list with
@@ -84,7 +87,7 @@ let rec filtermap (filter : 'a -> bool) (map : 'a -> 'b) (list : 'a list) : 'b l
 
 (* Problem 5
 val makesay string -> (string -> string) *)
-(*Solution: *)
-(*  *)
+(* Solution: Simply append the two strings together with the ^ operand.*)
+(* (makesay "hello") "world";; *)
 let makesay (a : string) (b : string) : string =
-  a ^ " "
+  a ^ " " ^ b
