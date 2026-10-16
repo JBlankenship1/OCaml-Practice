@@ -33,8 +33,6 @@ val from_int : int -> nat *)
 from_int is similar, but builds a successors list whilst decrementing i recursively. *)
 (* to_int (Succ (Succ (Succ Zero)));; *)
 (* from_int (5);; *)
-
-
 let to_int (a : nat) : int =
   let rec inc_func ((natural : nat), (i : int)) =
     match natural with
@@ -56,13 +54,11 @@ val evaluate: expr -> int *)
 (* Solution: After defining type with our parameters, we can iterate through the three operands, not stopping our 
 recursions until reaching a literal. *)
 (* evaluate(Mul (Mul (Mul (Literal 5, Literal 99), Literal 98), Literal 97));; *)
-
 type expr =
   | Literal of int
   | Plus of expr * expr
   | Minus of expr * expr
   | Mul of expr * expr
-
 let rec evaluate (ex : expr) : int =
   match ex with
   | Literal n -> n
