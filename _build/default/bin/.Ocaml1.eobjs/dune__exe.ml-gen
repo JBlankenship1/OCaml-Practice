@@ -5,3 +5,6 @@ module Ocaml1 = Dune__exe__Ocaml1
 
 (** @canonical Dune__exe.Ocaml2 *)
 module Ocaml2 = Dune__exe__Ocaml2
+
+(** @canonical Dune__exe.Ocaml3 *)
+module Ocaml3 = Dune__exe__Ocaml3
